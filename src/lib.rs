@@ -6,7 +6,6 @@ pub mod animators;
 pub use lerp;
 
 use std::{collections::{HashMap, hash_map::DefaultHasher}, time::Instant, ops, hash::{Hash, Hasher}};
-use keystone::*;
 use lerp::*;
 
 // Yes i know i use tabs && some newline braces for big blocks, i come from c# land and this MY LIBRARY so i can do what i want :)

@@ -23,20 +23,18 @@ pub fn sin_sigmoid(f: f32) -> f32 { (( (f - 0.5) * std::f32::consts::PI).sin() +
 /// Useful for ease-in-ease-out animations, but it's recommended to use [sin_sigmoid] or [ease_in_out] if possible for more concise code.
 pub fn in_out(start: impl Animator, end: impl Animator) -> impl Animator {
 	move |f|
-	tr!(f < 0.5 =>
-		start(f * 2.) / 2.
-		; end((f - 0.5) * 2.) / 2. + 0.5
-	)
+	if f < 0.5
+		{ start(f * 2.) / 2. }
+		else { end((f - 0.5) * 2.) / 2. + 0.5 }
 }
 
 
 /// Invokes the specified [Animator] in half the time, and for the other half, run the same animator, but flipped, creating a spike-like curve.
 pub fn spike(anim: impl Animator) -> impl Animator {
 	move |f|
-	tr!(f <= 0.5 =>
-		anim(f / 0.5)
-		; anim((1. - f) / 0.5)
-	)
+	if f <= 0.5
+		{ anim(f / 0.5) }
+		else { anim((1. - f) / 0.5) }
 }
 /// Like [spike], but stays at the end position for a certain amount of time before returning.
 /// 
@@ -44,10 +42,9 @@ pub fn spike(anim: impl Animator) -> impl Animator {
 pub fn spike_stay(time: f32, anim: impl Animator) -> impl Animator {
 	let transition_time = 0.5 - time / 2.;
 	move |f|
-	tr!(f <= transition_time =>
-			anim(f / transition_time)
-		, f >= 1. - transition_time =>
-			anim((1. - f) / transition_time)
-		; 1.
-	)
+	if f <= transition_time
+		{ anim(f / transition_time) }
+	else if f >= 1. - transition_time
+		{ anim((1. - f) / transition_time) }
+	else { 1. }
 }
