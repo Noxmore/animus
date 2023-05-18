@@ -2,6 +2,14 @@
 name = "animus"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "Framework independent lightweight rust animation library"
+homepage = "https://github.com/Noxmore/animus"
+documentation = "https://docs.rs/animus"
+repository = "https://github.com/Noxmore/animus"
+readme = "README.md"
+keywords = ["graphics", "animation"]
+categories = ["graphics", "gui"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
