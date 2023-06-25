@@ -13,7 +13,7 @@ pub fn ease_out(weight: f32) -> impl Animator { move |f| 1. - (1. - f).powf(weig
 /// Shorthand for using [in_out] with [ease_in], and [ease_out] both using the same weight.
 pub fn ease_in_out(weight: f32) -> impl Animator { in_out(ease_in(weight), ease_out(weight)) }
 
-/// Transforms `f` to a sigmoid value using sin function in the range `0.0..1.0`. Produces an ease-in-ease-out result.
+/// Alternative ease-in-ease-out, probably slightly faster then `ease_in_out`, but doesn't have weight option
 pub fn sin_sigmoid(f: f32) -> f32 { (( (f - 0.5) * std::f32::consts::PI).sin() + 1. ) / 2. }
 
 

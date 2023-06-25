@@ -1,8 +1,6 @@
 # Animus
 Framework independent lightweight rust animation library.
 
-> NOTE: currently only f32s are able to be animated, this almost certainly will change in the future, but for now you'll have to work around it, or make a PR to help fix it yourself :P
-
 # Usage
 - Add it to your project with the terminal: `cargo add animus`.
 - Create an instance of the `Animus` struct somewhere in your code. (e.g. before your main loop, or in your App struct) - example:
